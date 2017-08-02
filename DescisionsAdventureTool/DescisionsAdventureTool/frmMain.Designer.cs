@@ -1,6 +1,6 @@
 ﻿namespace DescisionsAdventureTool
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,10 +50,10 @@
             this.treeDetail = new System.Windows.Forms.TreeView();
             this.tbCDetail = new System.Windows.Forms.TabControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnNewAdventure = new System.Windows.Forms.Button();
-            this.btnSaveAdventure = new System.Windows.Forms.Button();
-            this.btnDeleteAdventure = new System.Windows.Forms.Button();
             this.btnCopyAdventure = new System.Windows.Forms.Button();
+            this.btnDeleteAdventure = new System.Windows.Forms.Button();
+            this.btnSaveAdventure = new System.Windows.Forms.Button();
+            this.btnNewAdventure = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tbCAdventures.SuspendLayout();
             this.tbPList.SuspendLayout();
@@ -90,31 +90,32 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.neuToolStripMenuItem.Text = "Neu";
+            this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // fortsetzenToolStripMenuItem
             // 
             this.fortsetzenToolStripMenuItem.Name = "fortsetzenToolStripMenuItem";
-            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fortsetzenToolStripMenuItem.Text = "Fortsetzen";
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // exportierenToolStripMenuItem
             // 
             this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
-            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportierenToolStripMenuItem.Text = "Exportieren";
             // 
             // kopierenToolStripMenuItem
             // 
             this.kopierenToolStripMenuItem.Name = "kopierenToolStripMenuItem";
-            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kopierenToolStripMenuItem.Text = "Kopieren";
             // 
             // bearbeitenToolStripMenuItem
@@ -242,25 +243,15 @@
             this.panel1.Size = new System.Drawing.Size(781, 46);
             this.panel1.TabIndex = 3;
             // 
-            // btnNewAdventure
+            // btnCopyAdventure
             // 
-            this.btnNewAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewAdventure.BackgroundImage")));
-            this.btnNewAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNewAdventure.Location = new System.Drawing.Point(3, 3);
-            this.btnNewAdventure.Name = "btnNewAdventure";
-            this.btnNewAdventure.Size = new System.Drawing.Size(40, 40);
-            this.btnNewAdventure.TabIndex = 0;
-            this.btnNewAdventure.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveAdventure
-            // 
-            this.btnSaveAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAdventure.BackgroundImage")));
-            this.btnSaveAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSaveAdventure.Location = new System.Drawing.Point(49, 3);
-            this.btnSaveAdventure.Name = "btnSaveAdventure";
-            this.btnSaveAdventure.Size = new System.Drawing.Size(40, 40);
-            this.btnSaveAdventure.TabIndex = 1;
-            this.btnSaveAdventure.UseVisualStyleBackColor = true;
+            this.btnCopyAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCopyAdventure.BackgroundImage")));
+            this.btnCopyAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCopyAdventure.Location = new System.Drawing.Point(141, 3);
+            this.btnCopyAdventure.Name = "btnCopyAdventure";
+            this.btnCopyAdventure.Size = new System.Drawing.Size(40, 40);
+            this.btnCopyAdventure.TabIndex = 3;
+            this.btnCopyAdventure.UseVisualStyleBackColor = true;
             // 
             // btnDeleteAdventure
             // 
@@ -272,17 +263,28 @@
             this.btnDeleteAdventure.TabIndex = 2;
             this.btnDeleteAdventure.UseVisualStyleBackColor = true;
             // 
-            // btnCopyAdventure
+            // btnSaveAdventure
             // 
-            this.btnCopyAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCopyAdventure.BackgroundImage")));
-            this.btnCopyAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCopyAdventure.Location = new System.Drawing.Point(141, 3);
-            this.btnCopyAdventure.Name = "btnCopyAdventure";
-            this.btnCopyAdventure.Size = new System.Drawing.Size(40, 40);
-            this.btnCopyAdventure.TabIndex = 3;
-            this.btnCopyAdventure.UseVisualStyleBackColor = true;
+            this.btnSaveAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAdventure.BackgroundImage")));
+            this.btnSaveAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveAdventure.Location = new System.Drawing.Point(49, 3);
+            this.btnSaveAdventure.Name = "btnSaveAdventure";
+            this.btnSaveAdventure.Size = new System.Drawing.Size(40, 40);
+            this.btnSaveAdventure.TabIndex = 1;
+            this.btnSaveAdventure.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // btnNewAdventure
+            // 
+            this.btnNewAdventure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewAdventure.BackgroundImage")));
+            this.btnNewAdventure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNewAdventure.Location = new System.Drawing.Point(3, 3);
+            this.btnNewAdventure.Name = "btnNewAdventure";
+            this.btnNewAdventure.Size = new System.Drawing.Size(40, 40);
+            this.btnNewAdventure.TabIndex = 0;
+            this.btnNewAdventure.UseVisualStyleBackColor = true;
+            this.btnNewAdventure.Click += new System.EventHandler(this.btnNewAdventure_Click);
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -295,7 +297,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(829, 596);
             this.MinimumSize = new System.Drawing.Size(829, 596);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.Text = "Decisions Adventure Tool 0.1.0";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
