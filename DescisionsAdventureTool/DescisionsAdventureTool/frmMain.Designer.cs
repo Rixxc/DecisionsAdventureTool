@@ -45,7 +45,7 @@
             this.bekannteFehlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbCAdventures = new System.Windows.Forms.TabControl();
             this.tbPList = new System.Windows.Forms.TabPage();
-            this.listAdventures = new System.Windows.Forms.ListView();
+            this.lvwAdventures = new System.Windows.Forms.ListView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.treeDetail = new System.Windows.Forms.TreeView();
             this.tbCDetail = new System.Windows.Forms.TabControl();
@@ -180,7 +180,7 @@
             // 
             // tbPList
             // 
-            this.tbPList.Controls.Add(this.listAdventures);
+            this.tbPList.Controls.Add(this.lvwAdventures);
             this.tbPList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPList.Location = new System.Drawing.Point(4, 22);
             this.tbPList.Name = "tbPList";
@@ -190,16 +190,16 @@
             this.tbPList.Text = "Abenteuer";
             this.tbPList.UseVisualStyleBackColor = true;
             // 
-            // listAdventures
+            // lvwAdventures
             // 
-            this.listAdventures.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listAdventures.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listAdventures.Location = new System.Drawing.Point(3, 3);
-            this.listAdventures.Name = "listAdventures";
-            this.listAdventures.Size = new System.Drawing.Size(240, 434);
-            this.listAdventures.TabIndex = 0;
-            this.listAdventures.UseCompatibleStateImageBehavior = false;
-            this.listAdventures.View = System.Windows.Forms.View.List;
+            this.lvwAdventures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwAdventures.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvwAdventures.Location = new System.Drawing.Point(3, 3);
+            this.lvwAdventures.Name = "lvwAdventures";
+            this.lvwAdventures.Size = new System.Drawing.Size(240, 434);
+            this.lvwAdventures.TabIndex = 0;
+            this.lvwAdventures.UseCompatibleStateImageBehavior = false;
+            this.lvwAdventures.View = System.Windows.Forms.View.List;
             // 
             // tabPage1
             // 
@@ -331,7 +331,7 @@
         private System.Windows.Forms.TabPage tbPList;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tbCDetail;
-        private System.Windows.Forms.ListView listAdventures;
+        private System.Windows.Forms.ListView lvwAdventures;
         private System.Windows.Forms.TreeView treeDetail;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnNewAdventure;

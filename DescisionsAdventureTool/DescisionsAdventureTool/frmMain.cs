@@ -16,11 +16,13 @@ namespace DescisionsAdventureTool
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Öffnet die Form mit der neue Abenteuer erstellt werden können.
+        /// </summary>
         public void OpenNewAdventureForm()
         {
             frmNewAdventure form = new frmNewAdventure();
-            form.Show();
+            form.ShowDialog();
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
