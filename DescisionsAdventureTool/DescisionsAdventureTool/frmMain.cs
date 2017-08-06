@@ -15,6 +15,8 @@ namespace DescisionsAdventureTool
         public frmMain()
         {
             InitializeComponent();
+            #region Init
+            #endregion
         }
         /// <summary>
         /// Öffnet die Form mit der neue Abenteuer erstellt werden können.

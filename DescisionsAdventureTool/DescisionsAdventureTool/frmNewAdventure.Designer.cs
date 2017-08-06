@@ -48,6 +48,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbSetting = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtAdventureName = new System.Windows.Forms.TextBox();
             this.tbCTree.SuspendLayout();
             this.tbPTree.SuspendLayout();
             this.tbCTextEditor.SuspendLayout();
@@ -131,6 +135,10 @@
             // 
             // tbPData
             // 
+            this.tbPData.Controls.Add(this.txtAdventureName);
+            this.tbPData.Controls.Add(this.label5);
+            this.tbPData.Controls.Add(this.cmbSetting);
+            this.tbPData.Controls.Add(this.label4);
             this.tbPData.Controls.Add(this.txtSectionID);
             this.tbPData.Controls.Add(this.button2);
             this.tbPData.Controls.Add(this.button1);
@@ -245,6 +253,39 @@
             // 
             this.toolTip.ShowAlways = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 154);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Szenario";
+            // 
+            // cmbSetting
+            // 
+            this.cmbSetting.FormattingEnabled = true;
+            this.cmbSetting.Location = new System.Drawing.Point(6, 170);
+            this.cmbSetting.Name = "cmbSetting";
+            this.cmbSetting.Size = new System.Drawing.Size(165, 21);
+            this.cmbSetting.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 203);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Abenteuer Name";
+            // 
+            // txtAdventureName
+            // 
+            this.txtAdventureName.Location = new System.Drawing.Point(6, 219);
+            this.txtAdventureName.Name = "txtAdventureName";
+            this.txtAdventureName.Size = new System.Drawing.Size(165, 20);
+            this.txtAdventureName.TabIndex = 15;
+            // 
             // frmNewAdventure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,5 +333,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtSectionID;
+        private System.Windows.Forms.TextBox txtAdventureName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbSetting;
+        private System.Windows.Forms.Label label4;
     }
 }

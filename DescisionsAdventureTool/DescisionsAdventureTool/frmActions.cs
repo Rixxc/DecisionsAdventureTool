@@ -12,6 +12,7 @@ namespace DescisionsAdventureTool
 {
     public partial class frmActions : Form
     {
+        int IDCounter;
         clsActions Action;
         int intActionCounter;
         public frmActions(int ID)
@@ -20,6 +21,7 @@ namespace DescisionsAdventureTool
             #region Init
             intActionCounter = ID;
             Action = new clsActions();
+            IDCounter = 0;
             #endregion
         }
 
@@ -76,6 +78,11 @@ namespace DescisionsAdventureTool
                         MessageBox.Show("Die ID wird bereits von einem Weg verwendet.");
                         failed = true;
                     }
+                    else if(Convert.ToInt32(txtSectionID.Text) == 0)
+                    {
+                        MessageBox.Show("Die ID der Action darf nicht 0 sein.");
+                        failed = true;
+                    }
                 }
                 Action.intActionID = Convert.ToInt32(txtSectionID.Text);
             }
@@ -107,9 +114,18 @@ namespace DescisionsAdventureTool
 
         private void txtSectionID_TextChanged(object sender, EventArgs e)
         {
-            if (txtSectionID.Text.Last() <= 47 && Convert.ToInt32(txtSectionID.Text.Last()) >= 58)
+            try
             {
-                txtSectionID.Text.Remove(txtSectionID.Text.Length - 1);
+
+                if (!Char.IsNumber(txtSectionID.Text.Last()))
+                {
+                    txtSectionID.Text = txtSectionID.Text.Remove(txtSectionID.Text.Length - 1, 1);
+                    txtSectionID.SelectionStart = txtSectionID.Text.Length;
+                }
+            }
+            catch
+            {
+
             }
         }
 
