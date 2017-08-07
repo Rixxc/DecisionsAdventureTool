@@ -33,7 +33,6 @@
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fortsetzenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kopierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,7 @@
             this.btnDeleteAdventure = new System.Windows.Forms.Button();
             this.btnSaveAdventure = new System.Windows.Forms.Button();
             this.btnNewAdventure = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tbCAdventures.SuspendLayout();
             this.tbPList.SuspendLayout();
@@ -80,7 +80,6 @@
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.neuToolStripMenuItem,
             this.fortsetzenToolStripMenuItem,
-            this.speichernToolStripMenuItem,
             this.exportierenToolStripMenuItem,
             this.kopierenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
@@ -90,33 +89,27 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // fortsetzenToolStripMenuItem
             // 
             this.fortsetzenToolStripMenuItem.Name = "fortsetzenToolStripMenuItem";
-            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.fortsetzenToolStripMenuItem.Text = "Fortsetzen";
-            // 
-            // speichernToolStripMenuItem
-            // 
-            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // exportierenToolStripMenuItem
             // 
             this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
-            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exportierenToolStripMenuItem.Text = "Exportieren";
             this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
             // 
             // kopierenToolStripMenuItem
             // 
             this.kopierenToolStripMenuItem.Name = "kopierenToolStripMenuItem";
-            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.kopierenToolStripMenuItem.Text = "Kopieren";
             this.kopierenToolStripMenuItem.Click += new System.EventHandler(this.kopierenToolStripMenuItem_Click);
             // 
@@ -219,6 +212,7 @@
             // treeDetail
             // 
             this.treeDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeDetail.Location = new System.Drawing.Point(3, 3);
             this.treeDetail.Name = "treeDetail";
             this.treeDetail.Size = new System.Drawing.Size(518, 434);
@@ -324,7 +318,6 @@
         private System.Windows.Forms.ToolStripMenuItem hildeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem neuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fortsetzenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kopierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ändernToolStripMenuItem;
@@ -342,6 +335,7 @@
         private System.Windows.Forms.Button btnSaveAdventure;
         private System.Windows.Forms.Button btnDeleteAdventure;
         private System.Windows.Forms.Button btnCopyAdventure;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

@@ -8,21 +8,73 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace DescisionsAdventureTool
 {
     public partial class frmMain : Form
     {
+        bool found;
         string path;
         string[] files;
-        int[,,] Adventure;
         public frmMain()
         {
             InitializeComponent();
             #region Init
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\Adventures\";
             UpdateListView();
+            found = false;
             #endregion
+        }
+        private void Deserialize()
+        {
+            bool flag = false;
+            string name = "";
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path + lvwAdventures.SelectedItems[0].Text + ".xml");
+            foreach (XmlNode item in doc.LastChild.SelectNodes("Abschnitt"))
+            {
+                found = false;
+                flag = false;
+                foreach (XmlNode list in doc.LastChild.SelectNodes("Abschnitt"))
+                {
+                    if (list.LastChild.FirstChild.InnerText.Contains(item.FirstChild.InnerText))
+                    {
+                        name = list.FirstChild.NextSibling.InnerText;
+                        foreach (TreeNode Node in treeDetail.Nodes)
+                        {
+                            if (Node.Text == name)
+                            {
+                                Node.Nodes.Add(item.FirstChild.NextSibling.InnerText);
+                            }
+                            else
+                            {
+                                Search(name, Node, item.FirstChild.NextSibling.InnerText);
+                            }
+                        }
+                        flag = true;
+                    }
+                }
+                if (flag == false)
+                {
+                    treeDetail.Nodes.Add(item.FirstChild.NextSibling.InnerText);
+                }
+            }
+        }
+        private void Search(string name, TreeNode Nodes, string Target)
+        {
+            foreach (TreeNode Node in Nodes.Nodes)
+            {
+                if (Node.Text == name)
+                {
+                    Node.Nodes.Add(Target);
+                }
+                else
+                {
+                    Search(name, Node, Target);
+                }
+            }
         }
         /// <summary>
         /// Öffnet die Form mit der neue Abenteuer erstellt werden können.
@@ -60,6 +112,8 @@ namespace DescisionsAdventureTool
             try
             {
                 string buff = lvwAdventures.SelectedItems[0].Text;
+                treeDetail.Nodes.Clear();
+                Deserialize();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -101,6 +155,21 @@ namespace DescisionsAdventureTool
             {
                 MessageBox.Show("Kein Abenteuer ausgewählt. Bitte ein Abenteuer aus der Liste auswählen.");
             }
+        }
+    }
+
+    public static class SOExtension
+    {
+        public static IEnumerable<TreeNode> FlattenTree(this TreeView tv)
+        {
+            return FlattenTree(tv.Nodes);
+        }
+
+        public static IEnumerable<TreeNode> FlattenTree(this TreeNodeCollection coll)
+        {
+            return coll.Cast<TreeNode>()
+                        .Concat(coll.Cast<TreeNode>()
+                                    .SelectMany(x => FlattenTree(x.Nodes)));
         }
     }
 }

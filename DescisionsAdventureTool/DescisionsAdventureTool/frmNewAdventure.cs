@@ -31,6 +31,8 @@ namespace DescisionsAdventureTool
         XmlNode NodeSetting;
         XmlNode NodeSex;
         XmlNode NodeSection;
+        XmlNode NodeID;
+        XmlNode NodeTitle;
         XmlNode NodeText;
         XmlNode NodeItems;
         XmlNode NodeButtons;
@@ -92,7 +94,9 @@ namespace DescisionsAdventureTool
                 if (Actions[i, 0] != 0)
                 {
                     #region Elemente erstellen
-                    NodeSection = doc.CreateElement("Abschnitt_" + Convert.ToString(Actions[i, 0]));
+                    NodeSection = doc.CreateElement("Abschnitt");
+                    NodeID = doc.CreateElement("ID");
+                    NodeTitle = doc.CreateElement("Titel");
                     NodeText = doc.CreateElement("Text");
                     NodeItems = doc.CreateElement("Items");
                     NodeButtons = doc.CreateElement("Buttons");
@@ -104,6 +108,8 @@ namespace DescisionsAdventureTool
                     #endregion
 
                     #region Inner Text festlegen
+                    NodeID.InnerText = Convert.ToString(Actions[i, 0]);
+                    NodeTitle.InnerText = ActionTitles[i];
                     NodeText.InnerText = strText[i];
 
                     for (int j = 0; j < 3; j++)
@@ -148,7 +154,7 @@ namespace DescisionsAdventureTool
                     }
                     NodeStatReq.InnerText = buff;
                     buff = "";
-                    NodeItemReq.InnerText = "";
+                    NodeItemReq.InnerText = " ";
                     #endregion
 
                     #region Ordnen
@@ -156,11 +162,13 @@ namespace DescisionsAdventureTool
                     NodeReq.AppendChild(NodeItemReq);
                     NodePath.AppendChild(NodePathID);
                     NodePath.AppendChild(NodeReq);
+                    NodeSection.AppendChild(NodeID);
+                    NodeSection.AppendChild(NodeTitle);
                     NodeSection.AppendChild(NodeText);
                     NodeSection.AppendChild(NodeItems);
                     NodeSection.AppendChild(NodeButtons);
                     NodeSection.AppendChild(NodePath);
-                    NodeSex.AppendChild(NodeSection);
+                    NodeDecision.AppendChild(NodeSection);
                     #endregion
                 }
             }
