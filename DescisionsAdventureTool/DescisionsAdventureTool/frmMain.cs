@@ -15,6 +15,7 @@ namespace DescisionsAdventureTool
     {
         string path;
         string[] files;
+        int[,,] Adventure;
         public frmMain()
         {
             InitializeComponent();
@@ -81,6 +82,20 @@ namespace DescisionsAdventureTool
                 Dialog.ShowDialog();
                 buff = Path.GetFullPath(Dialog.FileName);
                 File.Copy(path + lvwAdventures.SelectedItems[0].Text + ".xml", buff);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Kein Abenteuer ausgewählt. Bitte ein Abenteuer aus der Liste auswählen.");
+            }
+        }
+
+        private void kopierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string buff = lvwAdventures.SelectedItems[0].Text;
+                File.Copy(path + buff + ".xml", path + buff + "-Kopie.xml");
+                lvwAdventures.Items.Add(buff + "-Kopie");
             }
             catch (ArgumentOutOfRangeException)
             {

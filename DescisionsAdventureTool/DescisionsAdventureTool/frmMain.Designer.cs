@@ -90,20 +90,20 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // fortsetzenToolStripMenuItem
             // 
             this.fortsetzenToolStripMenuItem.Name = "fortsetzenToolStripMenuItem";
-            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fortsetzenToolStripMenuItem.Text = "Fortsetzen";
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // exportierenToolStripMenuItem
@@ -116,8 +116,9 @@
             // kopierenToolStripMenuItem
             // 
             this.kopierenToolStripMenuItem.Name = "kopierenToolStripMenuItem";
-            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kopierenToolStripMenuItem.Text = "Kopieren";
+            this.kopierenToolStripMenuItem.Click += new System.EventHandler(this.kopierenToolStripMenuItem_Click);
             // 
             // bearbeitenToolStripMenuItem
             // 
