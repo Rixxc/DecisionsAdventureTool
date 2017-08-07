@@ -12,7 +12,7 @@ namespace DescisionsAdventureTool
 {
     public partial class frmActions : Form
     {
-        int IDCounter;
+        //int IDCounter;
         clsActions Action;
         int intActionCounter;
         public frmActions(int ID)
@@ -21,7 +21,7 @@ namespace DescisionsAdventureTool
             #region Init
             intActionCounter = ID;
             Action = new clsActions();
-            IDCounter = 0;
+            //IDCounter = 0;
             #endregion
         }
 

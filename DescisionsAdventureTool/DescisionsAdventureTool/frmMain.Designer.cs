@@ -90,20 +90,20 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // fortsetzenToolStripMenuItem
             // 
             this.fortsetzenToolStripMenuItem.Name = "fortsetzenToolStripMenuItem";
-            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.fortsetzenToolStripMenuItem.Text = "Fortsetzen";
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // exportierenToolStripMenuItem
@@ -111,11 +111,12 @@
             this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
             this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportierenToolStripMenuItem.Text = "Exportieren";
+            this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
             // 
             // kopierenToolStripMenuItem
             // 
             this.kopierenToolStripMenuItem.Name = "kopierenToolStripMenuItem";
-            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.kopierenToolStripMenuItem.Text = "Kopieren";
             // 
             // bearbeitenToolStripMenuItem
@@ -194,12 +195,14 @@
             // 
             this.lvwAdventures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwAdventures.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvwAdventures.HideSelection = false;
             this.lvwAdventures.Location = new System.Drawing.Point(3, 3);
             this.lvwAdventures.Name = "lvwAdventures";
             this.lvwAdventures.Size = new System.Drawing.Size(240, 434);
             this.lvwAdventures.TabIndex = 0;
             this.lvwAdventures.UseCompatibleStateImageBehavior = false;
             this.lvwAdventures.View = System.Windows.Forms.View.List;
+            this.lvwAdventures.SelectedIndexChanged += new System.EventHandler(this.lvwAdventures_SelectedIndexChanged);
             // 
             // tabPage1
             // 

@@ -68,7 +68,7 @@ namespace DescisionsAdventureTool
 
             #region XML
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\";
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path + @"Adventures\");
             doc = new XmlDocument();
             dec = doc.CreateXmlDeclaration("1.0", "ISO-8859-1", null);
             doc.InsertBefore(dec, doc.DocumentElement);
@@ -164,7 +164,7 @@ namespace DescisionsAdventureTool
                     #endregion
                 }
             }
-            doc.Save(path + txtAdventureName.Text + ".xml");
+            doc.Save(path + @"Adventures\" + txtAdventureName.Text + ".xml");
         }
         public void AddOption()
         {
