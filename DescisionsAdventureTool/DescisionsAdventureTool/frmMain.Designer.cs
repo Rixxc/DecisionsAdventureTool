@@ -89,27 +89,27 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // fortsetzenToolStripMenuItem
             // 
             this.fortsetzenToolStripMenuItem.Name = "fortsetzenToolStripMenuItem";
-            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.fortsetzenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fortsetzenToolStripMenuItem.Text = "Fortsetzen";
             // 
             // exportierenToolStripMenuItem
             // 
             this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
-            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportierenToolStripMenuItem.Text = "Exportieren";
             this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
             // 
             // kopierenToolStripMenuItem
             // 
             this.kopierenToolStripMenuItem.Name = "kopierenToolStripMenuItem";
-            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.kopierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kopierenToolStripMenuItem.Text = "Kopieren";
             this.kopierenToolStripMenuItem.Click += new System.EventHandler(this.kopierenToolStripMenuItem_Click);
             // 
@@ -124,8 +124,9 @@
             // ändernToolStripMenuItem
             // 
             this.ändernToolStripMenuItem.Name = "ändernToolStripMenuItem";
-            this.ändernToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.ändernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ändernToolStripMenuItem.Text = "Ändern";
+            this.ändernToolStripMenuItem.Click += new System.EventHandler(this.ändernToolStripMenuItem_Click);
             // 
             // einstellungToolStripMenuItem
             // 

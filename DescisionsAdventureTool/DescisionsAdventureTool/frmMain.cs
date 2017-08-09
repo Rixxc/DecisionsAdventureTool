@@ -15,7 +15,6 @@ namespace DescisionsAdventureTool
 {
     public partial class frmMain : Form
     {
-        bool found;
         string path;
         string[] files;
         public frmMain()
@@ -24,7 +23,6 @@ namespace DescisionsAdventureTool
             #region Init
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\Adventures\";
             UpdateListView();
-            found = false;
             #endregion
         }
         private void Deserialize()
@@ -35,22 +33,21 @@ namespace DescisionsAdventureTool
             doc.Load(path + lvwAdventures.SelectedItems[0].Text + ".xml");
             foreach (XmlNode item in doc.LastChild.SelectNodes("Abschnitt"))
             {
-                found = false;
                 flag = false;
                 foreach (XmlNode list in doc.LastChild.SelectNodes("Abschnitt"))
                 {
-                    if (list.LastChild.FirstChild.InnerText.Contains(item.FirstChild.InnerText))
+                    if (list.LastChild.SelectSingleNode("ID").InnerText.Contains(item.SelectSingleNode("ID").InnerText))
                     {
-                        name = list.FirstChild.NextSibling.InnerText;
+                        name = list.SelectSingleNode("Titel").InnerText;
                         foreach (TreeNode Node in treeDetail.Nodes)
                         {
                             if (Node.Text == name)
                             {
-                                Node.Nodes.Add(item.FirstChild.NextSibling.InnerText);
+                                Node.Nodes.Add(item.SelectSingleNode("Titel").InnerText);
                             }
                             else
                             {
-                                Search(name, Node, item.FirstChild.NextSibling.InnerText);
+                                Search(name, Node, item.SelectSingleNode("Titel").InnerText);
                             }
                         }
                         flag = true;
@@ -58,7 +55,7 @@ namespace DescisionsAdventureTool
                 }
                 if (flag == false)
                 {
-                    treeDetail.Nodes.Add(item.FirstChild.NextSibling.InnerText);
+                    treeDetail.Nodes.Add(item.SelectSingleNode("Titel").InnerText);
                 }
             }
         }
@@ -156,20 +153,19 @@ namespace DescisionsAdventureTool
                 MessageBox.Show("Kein Abenteuer ausgewählt. Bitte ein Abenteuer aus der Liste auswählen.");
             }
         }
-    }
 
-    public static class SOExtension
-    {
-        public static IEnumerable<TreeNode> FlattenTree(this TreeView tv)
+        private void ändernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            return FlattenTree(tv.Nodes);
-        }
+            try
+            {
+                frmNewAdventure form = new frmNewAdventure(lvwAdventures.SelectedItems[0].Text);
+                form.ShowDialog();
+                UpdateListView();
+            }
+            catch
+            {
 
-        public static IEnumerable<TreeNode> FlattenTree(this TreeNodeCollection coll)
-        {
-            return coll.Cast<TreeNode>()
-                        .Concat(coll.Cast<TreeNode>()
-                                    .SelectMany(x => FlattenTree(x.Nodes)));
+            }
         }
     }
 }

@@ -32,6 +32,8 @@ namespace DescisionsAdventureTool
         XmlNode NodeSex;
         XmlNode NodeSection;
         XmlNode NodeID;
+        XmlNode NodeStatReq;
+        XmlNode NodeItemReq;
         XmlNode NodeTitle;
         XmlNode NodeText;
         XmlNode NodeItems;
@@ -39,8 +41,8 @@ namespace DescisionsAdventureTool
         XmlNode NodePath;
         XmlNode NodePathID;
         XmlNode NodeReq;
-        XmlNode NodeStatReq;
-        XmlNode NodeItemReq;
+        XmlNode NodeNextStatReq;
+        XmlNode NodeNextItemReq;
         #endregion
         public frmNewAdventure()
         {
@@ -78,6 +80,105 @@ namespace DescisionsAdventureTool
 
             #endregion
         }
+        
+        public frmNewAdventure(string name)
+        {
+            InitializeComponent();
+
+            #region Tooltips
+            toolTip.SetToolTip(label1, "Bestimmt den angezeigten Namen in der Wege Ansicht.\nFalls leer werden die ersten Wörter angezeigt.");
+            toolTip.SetToolTip(label2, "Bestimmt die einzigartige ID über die die Wege verknüpft werden." +
+                "\nMögliche Auswahl aus den Optionen des vorangegeganen Pfades.");
+            toolTip.SetToolTip(label3, "Das Geschlecht für das dieser Text geeignet ist." +
+                "\nFür das andere Geschlecht kann der Text im im Verlauf neu geschrieben werden.");
+            toolTip.SetToolTip(label4, "Das Setting in dem die Geschichte spielt.");
+            toolTip.SetToolTip(label5, "Der Name unter dem das Abenteuer gespeichert und später angezeigt werden soll.");
+            #endregion
+
+            #region Init
+
+            PathCounter = 0;
+            Actions = new int[1000, 6];
+            ActionTitles = new string[1000];
+            strText = new string[1000];
+            FollowingNode = new int[1000, 3];
+
+            #region XML
+            path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\";
+            Directory.CreateDirectory(path + @"Adventures\");
+            doc = new XmlDocument();
+            dec = doc.CreateXmlDeclaration("1.0", "ISO-8859-1", null);
+            doc.InsertBefore(dec, doc.DocumentElement);
+            #endregion
+
+            #endregion
+
+            #region Deserialize
+
+            LoadAdventure(name);
+
+            #endregion
+        }
+
+        public void LoadAdventure(string Target)
+        {
+            bool flag = false;
+            string name = "";
+            XmlDocument document = new XmlDocument();
+            doc.Load(path + @"\Adventures\" + Target + ".xml");
+            foreach (XmlNode item in doc.LastChild.SelectNodes("Abschnitt"))
+            {
+                flag = false;
+                foreach (XmlNode list in doc.LastChild.SelectNodes("Abschnitt"))
+                {
+                    if (list.LastChild.SelectSingleNode("ID").InnerText.Contains(item.FirstChild.InnerText))
+                    {
+                        name = list.SelectSingleNode("Titel").InnerText;
+                        foreach (TreeNode Node in treeChoices.Nodes)
+                        {
+                            if (Node.Text == name)
+                            {
+                                Node.Nodes.Add(item.SelectSingleNode("Titel").InnerText);
+                            }
+                            else
+                            {
+                                Search(name, Node, item.SelectSingleNode("Titel").InnerText);
+                            }
+                        }
+                        flag = true;
+                    }
+                }
+                if (flag == false)
+                {
+                    treeChoices.Nodes.Add(item.SelectSingleNode("Titel").InnerText);
+                }
+                ActionTitles[PathCounter] = item.SelectSingleNode("Titel").InnerText;
+                strText[PathCounter] = item.SelectSingleNode("Text").InnerText;
+                Actions[PathCounter, 0] = Convert.ToInt32(item.SelectSingleNode("ID").InnerText);
+                for (int i = 1; i < 6; i++)
+                {
+                    Actions[PathCounter, i] = Convert.ToInt32(item.SelectSingleNode("Attributvorraussetzungen").InnerText.Split(',')[i - 1]);
+                }
+                PathCounter++;
+            }
+            cmbSex.Text = doc.LastChild.SelectSingleNode("Geschlecht").InnerText;
+            txtAdventureName.Text = Target;
+        }
+        private void Search(string name, TreeNode Nodes, string Target)
+        {
+            foreach (TreeNode Node in Nodes.Nodes)
+            {
+                if (Node.Text == name)
+                {
+                    Node.Nodes.Add(Target);
+                }
+                else
+                {
+                    Search(name, Node, Target);
+                }
+            }
+        }
+
         public void SaveAdventure()
         {
             string buff = "";
@@ -96,6 +197,8 @@ namespace DescisionsAdventureTool
                     #region Elemente erstellen
                     NodeSection = doc.CreateElement("Abschnitt");
                     NodeID = doc.CreateElement("ID");
+                    NodeStatReq = doc.CreateElement("Attributvorraussetzungen");
+                    NodeItemReq = doc.CreateElement("Itemvorraussetzungen");
                     NodeTitle = doc.CreateElement("Titel");
                     NodeText = doc.CreateElement("Text");
                     NodeItems = doc.CreateElement("Items");
@@ -103,13 +206,24 @@ namespace DescisionsAdventureTool
                     NodePath = doc.CreateElement("Weiter");
                     NodePathID = doc.CreateElement("ID");
                     NodeReq = doc.CreateElement("Vorraussetzungen");
-                    NodeItemReq = doc.CreateElement("Items");
-                    NodeStatReq = doc.CreateElement("Attribute");
+                    NodeNextItemReq = doc.CreateElement("Items");
+                    NodeNextStatReq = doc.CreateElement("Attribute");
                     #endregion
 
                     #region Inner Text festlegen
                     NodeID.InnerText = Convert.ToString(Actions[i, 0]);
+
+                    for (int j = 1; j < 6; j++)
+                    {
+                        buff = buff + Convert.ToString(Actions[i,j] + ",");
+                    }
+                    NodeStatReq.InnerText = buff;
+                    buff = "";
+
+                    NodeItemReq.InnerText = "";
+
                     NodeTitle.InnerText = ActionTitles[i];
+
                     NodeText.InnerText = strText[i];
 
                     for (int j = 0; j < 3; j++)
@@ -152,17 +266,19 @@ namespace DescisionsAdventureTool
                             }
                         }
                     }
-                    NodeStatReq.InnerText = buff;
+                    NodeNextStatReq.InnerText = buff;
                     buff = "";
-                    NodeItemReq.InnerText = " ";
+                    NodeNextItemReq.InnerText = " ";
                     #endregion
 
                     #region Ordnen
-                    NodeReq.AppendChild(NodeStatReq);
-                    NodeReq.AppendChild(NodeItemReq);
+                    NodeReq.AppendChild(NodeNextStatReq);
+                    NodeReq.AppendChild(NodeNextItemReq);
                     NodePath.AppendChild(NodePathID);
                     NodePath.AppendChild(NodeReq);
                     NodeSection.AppendChild(NodeID);
+                    NodeSection.AppendChild(NodeStatReq);
+                    NodeSection.AppendChild(NodeItemReq);
                     NodeSection.AppendChild(NodeTitle);
                     NodeSection.AppendChild(NodeText);
                     NodeSection.AppendChild(NodeItems);
