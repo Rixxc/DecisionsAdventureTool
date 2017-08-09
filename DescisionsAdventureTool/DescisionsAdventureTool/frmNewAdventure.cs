@@ -14,6 +14,7 @@ namespace DescisionsAdventureTool
         public static string[] ActionTitles;
         public string[] strText;
         public string[] strItems;
+        public static bool flag;
         int[,] FollowingNode;
         string path;
         #region XML
@@ -60,6 +61,7 @@ namespace DescisionsAdventureTool
             ActionTitles[0] = "Anfang";
             txtSectionID.Text = "1";
             Actions[0, 0] = 1;
+            flag = false;
             FollowingNode = new int[1000, 3];
 
             #region XML
@@ -296,12 +298,16 @@ namespace DescisionsAdventureTool
             {
                 form = new frmActions(ActionCounter);
                 form.ShowDialog();
-                AddTreeNode();
-                PathCounter++;
-                if (PathCounter >= 1000)
+                if (flag == true)
                 {
-                    MessageBox.Show("Mehr Wege Können nicht erstellt werden.");
+                    AddTreeNode();
+                    PathCounter++;
+                    if (PathCounter >= 1000)
+                    {
+                        MessageBox.Show("Mehr Wege Können nicht erstellt werden.");
+                    }
                 }
+                flag = false;
             }
         }
 

@@ -101,6 +101,7 @@ namespace DescisionsAdventureTool
             #endregion
             if (failed == false)
             {
+                frmNewAdventure.flag = true;
                 this.setActions();
                 this.Close();
             }
