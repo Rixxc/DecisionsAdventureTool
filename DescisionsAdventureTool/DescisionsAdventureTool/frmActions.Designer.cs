@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSectionID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBacktracking = new System.Windows.Forms.CheckBox();
             this.tbCInventory.SuspendLayout();
             this.tbCRequirement.SuspendLayout();
             this.tbRequirement.SuspendLayout();
@@ -230,6 +231,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBacktracking);
             this.tabPage1.Controls.Add(this.txtActionTitle);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txtSectionID);
@@ -275,6 +277,16 @@
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Abschnitt-ID";
+            // 
+            // checkBacktracking
+            // 
+            this.checkBacktracking.AutoSize = true;
+            this.checkBacktracking.Location = new System.Drawing.Point(202, 26);
+            this.checkBacktracking.Name = "checkBacktracking";
+            this.checkBacktracking.Size = new System.Drawing.Size(90, 17);
+            this.checkBacktracking.TabIndex = 4;
+            this.checkBacktracking.Text = "Zurückführen";
+            this.checkBacktracking.UseVisualStyleBackColor = true;
             // 
             // frmActions
             // 
@@ -328,5 +340,6 @@
         private System.Windows.Forms.TextBox txtSectionID;
         private System.Windows.Forms.TextBox txtActionTitle;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBacktracking;
     }
 }

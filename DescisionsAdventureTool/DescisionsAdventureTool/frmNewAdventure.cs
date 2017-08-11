@@ -15,6 +15,7 @@ namespace DescisionsAdventureTool
         public string[] strText;
         public string[] strItems;
         public static bool flag;
+        public static bool BackTrack;
         int[,] FollowingNode;
         string path;
         #region XML
@@ -62,6 +63,7 @@ namespace DescisionsAdventureTool
             txtSectionID.Text = "1";
             Actions[0, 0] = 1;
             flag = false;
+            BackTrack = false;
             FollowingNode = new int[1000, 3];
 
             #region XML
@@ -95,6 +97,7 @@ namespace DescisionsAdventureTool
             Actions = new int[1000, 6];
             ActionTitles = new string[1000];
             strText = new string[1000];
+            BackTrack = false;
             FollowingNode = new int[1000, 3];
 
             #region XML
@@ -119,7 +122,7 @@ namespace DescisionsAdventureTool
             bool flag = false;
             string name = "";
             XmlDocument document = new XmlDocument();
-            doc.Load(path + @"\Adventures\" + Target + ".xml");
+            doc.Load(path + @"Adventures\" + Target + ".xml");
             foreach (XmlNode item in doc.LastChild.SelectNodes("Abschnitt"))
             {
                 flag = false;
@@ -301,6 +304,16 @@ namespace DescisionsAdventureTool
                 if (flag == true)
                 {
                     AddTreeNode();
+                    if (BackTrack == true)
+                    {
+                        for (int i = 0; i < 1000; i++)
+                        {
+                            if (treeChoices.SelectedNode.Text == ActionTitles[i])
+                            {
+                                FollowingNode[PathCounter, 0] = Actions[i, 0];
+                            }
+                        }
+                    }
                     PathCounter++;
                     if (PathCounter >= 1000)
                     {
@@ -308,6 +321,7 @@ namespace DescisionsAdventureTool
                     }
                 }
                 flag = false;
+                BackTrack = false;
             }
         }
 

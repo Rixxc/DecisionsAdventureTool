@@ -14,7 +14,7 @@ namespace DescisionsAdventureTool
             InitializeComponent();
             #region Init
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\Adventures\";
-            Directory.CreateDirectory(path + @"Adventures\");
+            Directory.CreateDirectory(path);
             UpdateListView();
             #endregion
         }

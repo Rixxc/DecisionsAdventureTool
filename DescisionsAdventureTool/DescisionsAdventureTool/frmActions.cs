@@ -137,6 +137,10 @@ namespace DescisionsAdventureTool
             frmNewAdventure.Actions[frmNewAdventure.PathCounter, 4] = Action.intDexterityReq;
             frmNewAdventure.Actions[frmNewAdventure.PathCounter, 5] = Action.intBraveReq;
             frmNewAdventure.ActionTitles[frmNewAdventure.PathCounter] = Action.strActionName;
+            if (checkBacktracking.Checked)
+            {
+                frmNewAdventure.BackTrack = true;
+            }
         }
     }
 }
