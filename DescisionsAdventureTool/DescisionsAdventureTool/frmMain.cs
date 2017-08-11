@@ -160,5 +160,55 @@ namespace DescisionsAdventureTool
 
             }
         }
+
+        private void btnDeleteAdventure_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string buff = lvwAdventures.SelectedItems[0].Text;
+                File.Delete(path + buff + ".xml");
+                UpdateListView();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnCopyAdventure_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string buff = lvwAdventures.SelectedItems[0].Text;
+                File.Copy(path + buff + ".xml", path + buff + "-Kopie.xml");
+                lvwAdventures.Items.Add(buff + "-Kopie");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Kein Abenteuer ausgewählt. Bitte ein Abenteuer aus der Liste auswählen.");
+            }
+        }
+
+        private void btnSaveAdventure_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string buff = lvwAdventures.SelectedItems[0].Text;
+                SaveFileDialog Dialog = new SaveFileDialog();
+                Dialog.FileName = buff;
+                Dialog.AddExtension = true;
+                Dialog.CreatePrompt = false;
+                Dialog.Filter = "XML-Dateine (*.xml)|*.xml|Alle Dateien (*.*)|*.*";
+                Dialog.OverwritePrompt = true;
+                Dialog.ShowDialog();
+                buff = Path.GetFullPath(Dialog.FileName);
+                File.Copy(path + lvwAdventures.SelectedItems[0].Text + ".xml", buff);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Kein Abenteuer ausgewählt. Bitte ein Abenteuer aus der Liste auswählen.");
+            }
+        }
     }
 }

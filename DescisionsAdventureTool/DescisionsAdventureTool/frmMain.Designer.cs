@@ -251,6 +251,7 @@
             this.btnCopyAdventure.Size = new System.Drawing.Size(40, 40);
             this.btnCopyAdventure.TabIndex = 3;
             this.btnCopyAdventure.UseVisualStyleBackColor = true;
+            this.btnCopyAdventure.Click += new System.EventHandler(this.btnCopyAdventure_Click);
             // 
             // btnDeleteAdventure
             // 
@@ -261,6 +262,7 @@
             this.btnDeleteAdventure.Size = new System.Drawing.Size(40, 40);
             this.btnDeleteAdventure.TabIndex = 2;
             this.btnDeleteAdventure.UseVisualStyleBackColor = true;
+            this.btnDeleteAdventure.Click += new System.EventHandler(this.btnDeleteAdventure_Click);
             // 
             // btnSaveAdventure
             // 
@@ -271,6 +273,7 @@
             this.btnSaveAdventure.Size = new System.Drawing.Size(40, 40);
             this.btnSaveAdventure.TabIndex = 1;
             this.btnSaveAdventure.UseVisualStyleBackColor = true;
+            this.btnSaveAdventure.Click += new System.EventHandler(this.btnSaveAdventure_Click);
             // 
             // btnNewAdventure
             // 
