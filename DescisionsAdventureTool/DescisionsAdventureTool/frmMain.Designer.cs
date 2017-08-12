@@ -300,7 +300,7 @@
             this.MaximumSize = new System.Drawing.Size(829, 596);
             this.MinimumSize = new System.Drawing.Size(829, 596);
             this.Name = "frmMain";
-            this.Text = "Decisions Adventure Tool 1.1.0";
+            this.Text = "Decisions Adventure Tool 1.1.1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tbCAdventures.ResumeLayout(false);

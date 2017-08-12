@@ -201,7 +201,7 @@ namespace DescisionsAdventureTool
                     NodeItems = doc.CreateElement("Items");
                     NodeButtons = doc.CreateElement("Buttons");
                     NodePath = doc.CreateElement("Weiter");
-                    NodePathID = doc.CreateElement("ID");
+                    NodePathID = doc.CreateElement("IDS");
                     NodeReq = doc.CreateElement("Vorraussetzungen");
                     NodeNextItemReq = doc.CreateElement("Items");
                     NodeNextStatReq = doc.CreateElement("Attribute");
@@ -214,6 +214,7 @@ namespace DescisionsAdventureTool
                     {
                         buff = buff + Convert.ToString(Actions[i,j] + ",");
                     }
+                    buff = buff.Remove(buff.Length - 1);
                     NodeStatReq.InnerText = buff;
                     buff = "";
 
@@ -233,6 +234,14 @@ namespace DescisionsAdventureTool
                             }
                         }
                     }
+                    try
+                    {
+                        buff = buff.Remove(buff.Length - 1);
+                    }
+                    catch
+                    {
+
+                    }
                     NodeButtons.InnerText = buff;
                     buff = "";
 
@@ -240,6 +249,7 @@ namespace DescisionsAdventureTool
                     {
                         buff = buff + Convert.ToString(FollowingNode[i, j]) + ";";
                     }
+                    buff = buff.Remove(buff.Length - 1);
                     NodePathID.InnerText = buff;
                     buff = "";
 
@@ -262,6 +272,14 @@ namespace DescisionsAdventureTool
                                 }
                             }
                         }
+                    }
+                    try
+                    {
+                        buff = buff.Remove(buff.Length - 1);
+                    }
+                    catch
+                    {
+
                     }
                     NodeNextStatReq.InnerText = buff;
                     buff = "";
