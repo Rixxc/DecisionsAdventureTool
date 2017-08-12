@@ -17,6 +17,7 @@ namespace DescisionsAdventureTool
         public static bool flag;
         public static bool BackTrack;
         int[,] FollowingNode;
+        private int MaxPathCount;
         string path;
         #region XML
         XmlDocument doc;
@@ -54,17 +55,18 @@ namespace DescisionsAdventureTool
 
             #region Init
 
+            MaxPathCount = 5000;
             PathCounter = 1;
-            Actions = new int[1000,6];
-            ActionTitles = new string[1000];
-            strText = new string[1000];
+            Actions = new int[MaxPathCount,6];
+            ActionTitles = new string[MaxPathCount];
+            strText = new string[MaxPathCount];
             treeChoices.Nodes.Add("Anfang");
             ActionTitles[0] = "Anfang";
             txtSectionID.Text = "1";
             Actions[0, 0] = 1;
             flag = false;
             BackTrack = false;
-            FollowingNode = new int[1000, 3];
+            FollowingNode = new int[MaxPathCount, 3];
 
             #region XML
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\";
@@ -93,12 +95,13 @@ namespace DescisionsAdventureTool
 
             #region Init
 
+            MaxPathCount = 5000;
             PathCounter = 0;
-            Actions = new int[1000, 6];
-            ActionTitles = new string[1000];
-            strText = new string[1000];
+            Actions = new int[MaxPathCount, 6];
+            ActionTitles = new string[MaxPathCount];
+            strText = new string[MaxPathCount];
             BackTrack = false;
-            FollowingNode = new int[1000, 3];
+            FollowingNode = new int[MaxPathCount, 3];
 
             #region XML
             path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DecisionsTool\";
@@ -128,7 +131,7 @@ namespace DescisionsAdventureTool
                 flag = false;
                 foreach (XmlNode list in doc.LastChild.SelectNodes("Abschnitt"))
                 {
-                    if (list.LastChild.SelectSingleNode("ID").InnerText.Contains(item.FirstChild.InnerText))
+                    if (list.LastChild.SelectSingleNode("IDS").InnerText.Contains(item.FirstChild.InnerText))
                     {
                         name = list.SelectSingleNode("Titel").InnerText;
                         foreach (TreeNode Node in treeChoices.Nodes)
@@ -187,7 +190,7 @@ namespace DescisionsAdventureTool
             doc.AppendChild(NodeDecision);
             NodeDecision.AppendChild(NodeSetting);
             NodeDecision.AppendChild(NodeSex);
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < MaxPathCount; i++)
             {
                 if (Actions[i, 0] != 0)
                 {
@@ -198,7 +201,7 @@ namespace DescisionsAdventureTool
                     NodeItemReq = doc.CreateElement("Itemvorraussetzungen");
                     NodeTitle = doc.CreateElement("Titel");
                     NodeText = doc.CreateElement("Text");
-                    NodeItems = doc.CreateElement("Items");
+                    NodeItems = doc.CreateElement("Itembelohnungen");
                     NodeButtons = doc.CreateElement("Buttons");
                     NodePath = doc.CreateElement("Weiter");
                     NodePathID = doc.CreateElement("IDS");
@@ -224,9 +227,11 @@ namespace DescisionsAdventureTool
 
                     NodeText.InnerText = strText[i];
 
+                    NodeItems.InnerText = "";
+
                     for (int j = 0; j < 3; j++)
                     {
-                        for (int k = 0; k < 1000; k++)
+                        for (int k = 0; k < MaxPathCount; k++)
                         {
                             if (FollowingNode[i, j] == Actions[k, 0] && FollowingNode[i, j] != 0)
                             {
@@ -255,7 +260,7 @@ namespace DescisionsAdventureTool
 
                     for (int j = 0; j < 3; j++)
                     {
-                        for (int k = 0; k < 1000; k++)
+                        for (int k = 0; k < MaxPathCount; k++)
                         {
                             if (FollowingNode[i, j] == Actions[k, 0] && FollowingNode[i, j] != 0)
                             {
@@ -324,7 +329,7 @@ namespace DescisionsAdventureTool
                     AddTreeNode();
                     if (BackTrack == true)
                     {
-                        for (int i = 0; i < 1000; i++)
+                        for (int i = 0; i < MaxPathCount; i++)
                         {
                             if (treeChoices.SelectedNode.Text == ActionTitles[i])
                             {
@@ -333,7 +338,7 @@ namespace DescisionsAdventureTool
                         }
                     }
                     PathCounter++;
-                    if (PathCounter >= 1000)
+                    if (PathCounter >= MaxPathCount)
                     {
                         MessageBox.Show("Mehr Wege Können nicht erstellt werden.");
                     }
@@ -349,7 +354,7 @@ namespace DescisionsAdventureTool
             {
                 treeChoices.SelectedNode = treeChoices.Nodes[0];
             }
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < MaxPathCount; i++)
             {
                 if (treeChoices.SelectedNode.Text == ActionTitles[i])
                 {
@@ -378,7 +383,7 @@ namespace DescisionsAdventureTool
                 treeChoices.SelectedNode = treeChoices.Nodes[0];
             }
             treeChoices.SelectedNode.Text = txtSectionTitel.Text;
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < MaxPathCount; i++)
             {
                 if (txtSectionID.Text == Convert.ToString(Actions[i, 0]))
                 {
@@ -389,7 +394,7 @@ namespace DescisionsAdventureTool
 
         private void txtEditor_TextChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < MaxPathCount; i++)
             {
                 if (txtSectionID.Text == Convert.ToString(Actions[i, 0]))
                 {
@@ -404,7 +409,7 @@ namespace DescisionsAdventureTool
             {
                 treeChoices.SelectedNode = treeChoices.Nodes[0];
             }
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < MaxPathCount; i++)
             {
                 if (ActionTitles[i] == treeChoices.SelectedNode.Text)
                 {

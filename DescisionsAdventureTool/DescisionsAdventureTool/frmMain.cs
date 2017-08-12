@@ -29,7 +29,7 @@ namespace DescisionsAdventureTool
                 flag = false;
                 foreach (XmlNode list in doc.LastChild.SelectNodes("Abschnitt"))
                 {
-                    if (list.LastChild.SelectSingleNode("ID").InnerText.Contains(item.SelectSingleNode("ID").InnerText))
+                    if (list.LastChild.SelectSingleNode("IDS").InnerText.Contains(item.SelectSingleNode("ID").InnerText))
                     {
                         name = list.SelectSingleNode("Titel").InnerText;
                         foreach (TreeNode Node in treeDetail.Nodes)
@@ -168,6 +168,7 @@ namespace DescisionsAdventureTool
                 string buff = lvwAdventures.SelectedItems[0].Text;
                 File.Delete(path + buff + ".xml");
                 UpdateListView();
+                treeDetail.Nodes.Clear();
             }
             catch (Exception)
             {
@@ -203,7 +204,7 @@ namespace DescisionsAdventureTool
                 Dialog.OverwritePrompt = true;
                 Dialog.ShowDialog();
                 buff = Path.GetFullPath(Dialog.FileName);
-                File.Copy(path + lvwAdventures.SelectedItems[0].Text + ".xml", buff);
+                File.Copy(path + lvwAdventures.SelectedItems[0].Text + ".xml", buff, true);
             }
             catch (ArgumentOutOfRangeException)
             {

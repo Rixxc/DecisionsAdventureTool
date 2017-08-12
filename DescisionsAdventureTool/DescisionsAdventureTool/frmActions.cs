@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace DescisionsAdventureTool
 {
@@ -9,12 +13,32 @@ namespace DescisionsAdventureTool
         //int IDCounter;
         clsActions Action;
         int intActionCounter;
+        string Connection;
+        MySqlConnection con;
+        MySqlCommand command;
+        MySqlDataAdapter adapter;
+        DataTable dt;
         public frmActions(int ID)
         {
             InitializeComponent();
             #region Init
             intActionCounter = ID;
+            Connection = @"host=localhost;user=root;database=itemsystem";
+            con = new MySqlConnection(Connection);
+            command = new MySqlCommand("SELECT name AS Name, typ AS Typ FROM items", con);
+            adapter = new MySqlDataAdapter(command);
+            dt = new DataTable();
             Action = new clsActions();
+            try
+            {
+                con.OpenAsync();
+                adapter.Fill(dt);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             //IDCounter = 0;
             #endregion
         }

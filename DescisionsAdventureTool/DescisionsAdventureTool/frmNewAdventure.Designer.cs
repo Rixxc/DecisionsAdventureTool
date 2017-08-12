@@ -175,6 +175,8 @@
             // cmbSetting
             // 
             this.cmbSetting.FormattingEnabled = true;
+            this.cmbSetting.Items.AddRange(new object[] {
+            "Mittelalter"});
             this.cmbSetting.Location = new System.Drawing.Point(6, 170);
             this.cmbSetting.Name = "cmbSetting";
             this.cmbSetting.Size = new System.Drawing.Size(165, 21);
